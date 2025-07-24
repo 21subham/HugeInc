@@ -1,5 +1,6 @@
 import Header from "./components/header";
 import Hugecube from "./components/hugecube";
+import WhoWeAre from "./components/whoweare";
 import "./App.css";
 
 function App() {
@@ -7,6 +8,7 @@ function App() {
     <>
       <Header />
       <Hugecube />
+      <WhoWeAre />
     </>
   );
 }

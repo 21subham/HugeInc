@@ -6,6 +6,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 const Hugecube = () => {
   const cubeRef = useRef(null);
+  const wrapperRef = useRef(null);
 
   useEffect(() => {
     gsap.to(cubeRef.current, {
@@ -21,7 +22,7 @@ const Hugecube = () => {
   }, []);
 
   return (
-    <div className="h-[200vh] bg-black flex items-center justify-center">
+    <div className="min-h-screen bg-black flex items-center justify-center ">
       <div className="w-48 h-48 relative" style={{ perspective: "1000px" }}>
         <div
           ref={cubeRef}
@@ -33,14 +34,10 @@ const Hugecube = () => {
         >
           {/* Front Face */}
           <div
-            className="absolute w-full h-full bg-white"
+            className="absolute w-full h-full flex items-center justify-center bg-pink-500 text-6xl"
             style={{ transform: "rotateY(0deg) translateZ(6rem)" }}
           >
-            <img
-              src="/img1.jpg"
-              alt="Front"
-              className="w-full h-full object-cover"
-            />
+            Huge
           </div>
 
           {/* Right Face */}
@@ -49,7 +46,7 @@ const Hugecube = () => {
             style={{ transform: "rotateY(90deg) translateZ(6rem)" }}
           >
             <img
-              src="/img2.jpg"
+              src="../../public/Facebook.jpg"
               alt="Right"
               className="w-full h-full object-cover"
             />
@@ -61,7 +58,7 @@ const Hugecube = () => {
             style={{ transform: "rotateY(180deg) translateZ(6rem)" }}
           >
             <img
-              src="/img3.jpg"
+              src="../../public/github.jpg"
               alt="Back"
               className="w-full h-full object-cover"
             />
@@ -73,7 +70,7 @@ const Hugecube = () => {
             style={{ transform: "rotateY(-90deg) translateZ(6rem)" }}
           >
             <img
-              src="/img4.jpg"
+              src="../../public/reddit.jpg"
               alt="Left"
               className="w-full h-full object-cover"
             />
