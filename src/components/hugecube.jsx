@@ -6,30 +6,36 @@ gsap.registerPlugin(ScrollTrigger);
 
 const Hugecube = () => {
   const cubeRef = useRef(null);
-  const wrapperRef = useRef(null);
 
   useEffect(() => {
-    gsap.to(cubeRef.current, {
-      rotateY: 360, // Rotates sideways
-      ease: "none",
-      scrollTrigger: {
-        trigger: cubeRef.current,
-        start: "top center",
-        end: "bottom+=500 center",
-        scrub: true,
-      },
+    const ctx = gsap.context(() => {
+      gsap.to(cubeRef.current, {
+        rotateY: 450,
+        ease: "none",
+        scrollTrigger: {
+          trigger: document.body,
+          start: "top top",
+          end: "bottom bottom",
+          scrub: true,
+        },
+      });
     });
+
+    return () => ctx.revert();
   }, []);
 
   return (
-    <div className="min-h-screen bg-black flex items-center justify-center ">
-      <div className="w-48 h-48 relative" style={{ perspective: "1000px" }}>
+    <>
+      {/* Global Cube */}
+      <div
+        className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-50 w-48 h-48"
+        style={{ perspective: "1000px", pointerEvents: "none" }}
+      >
         <div
           ref={cubeRef}
           className="w-full h-full absolute"
           style={{
             transformStyle: "preserve-3d",
-            transition: "transform 1s",
           }}
         >
           {/* Front Face */}
@@ -46,7 +52,7 @@ const Hugecube = () => {
             style={{ transform: "rotateY(90deg) translateZ(6rem)" }}
           >
             <img
-              src="../../public/Facebook.jpg"
+              src="/Facebook.jpg"
               alt="Right"
               className="w-full h-full object-cover"
             />
@@ -58,7 +64,7 @@ const Hugecube = () => {
             style={{ transform: "rotateY(180deg) translateZ(6rem)" }}
           >
             <img
-              src="../../public/github.jpg"
+              src="/github.jpg"
               alt="Back"
               className="w-full h-full object-cover"
             />
@@ -70,14 +76,17 @@ const Hugecube = () => {
             style={{ transform: "rotateY(-90deg) translateZ(6rem)" }}
           >
             <img
-              src="../../public/reddit.jpg"
+              src="/reddit.jpg"
               alt="Left"
               className="w-full h-full object-cover"
             />
           </div>
         </div>
       </div>
-    </div>
+
+      {/* Scrollable Content */}
+      <section className="h-screen bg-black text-4xl flex items-center justify-center"></section>
+    </>
   );
 };
 

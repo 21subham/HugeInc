@@ -24,7 +24,7 @@ const Header = () => {
   };
 
   return (
-    <header className="fixed top-0 left-0 w-full flex items-center justify-between px-6 py-8 z-50">
+    <header className="fixed top-0 left-0 min-w-screen flex items-center justify-between px-6 py-8 z-50">
       {/* Left: Huge | Menu */}
       <div className="flex shadow-md">
         <div className="bg-pink-500 text-black px-4 py-4 font-semibold transition-transform duration-200 hover:scale-110">
