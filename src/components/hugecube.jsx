@@ -24,20 +24,20 @@ const Hugecube = () => {
           rotateY: 360,
           scale: 1,
           ease: "none",
-          duration: 0.8,
+          duration: 1,
         })
         // spin
         .to(cubeRef.current, {
           rotateZ: 360,
           ease: "none",
-          duration: 0.4,
+          duration: 1,
         })
         // Disappear (fade out)
         .to(cubeRef.current, {
           opacity: 0,
           scale: 100,
-          ease: "none",
-          duration: 0.1,
+          ease: "sine.inOut",
+          duration: 0.8,
         });
     });
 
@@ -52,6 +52,7 @@ const Hugecube = () => {
         style={{ perspective: "1000px", pointerEvents: "none" }}
       >
         <div
+          id="front"
           ref={cubeRef}
           className="w-full h-full absolute"
           style={{
