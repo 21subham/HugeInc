@@ -19,24 +19,25 @@ const Hugecube = () => {
             scrub: true,
           },
         })
+        //spin on y
         .to(cubeRef.current, {
-          rotateY: 360, // One full rotation on Y-axis
-          scale: 1.5, // Pop out effect
+          rotateY: 360,
+          scale: 1,
           ease: "none",
-          duration: 0.8, // First part of the scroll
+          duration: 0.8,
         })
-        // Rotate on X-axis
+        // spin
         .to(cubeRef.current, {
-          rotateZ: 360, // One full rotation on X-axis
+          rotateZ: 360,
           ease: "none",
-          duration: 0.4, // Second part of the scroll
+          duration: 0.4,
         })
         // Disappear (fade out)
         .to(cubeRef.current, {
           opacity: 0,
-          scale: 100, // Shrink while fading
+          scale: 100,
           ease: "none",
-          duration: 0.1, // Final part of the scroll
+          duration: 0.1,
         });
     });
 
