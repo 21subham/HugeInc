@@ -9,16 +9,35 @@ const Hugecube = () => {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.to(cubeRef.current, {
-        rotateY: 450,
-        ease: "none",
-        scrollTrigger: {
-          trigger: document.body,
-          start: "top top",
-          end: "bottom bottom",
-          scrub: true,
-        },
-      });
+      // Create a timeline for the animation
+      gsap
+        .timeline({
+          scrollTrigger: {
+            trigger: document.body,
+            start: "top top",
+            end: "bottom bottom",
+            scrub: true,
+          },
+        })
+        .to(cubeRef.current, {
+          rotateY: 360, // One full rotation on Y-axis
+          scale: 1.5, // Pop out effect
+          ease: "none",
+          duration: 0.8, // First part of the scroll
+        })
+        // Rotate on X-axis
+        .to(cubeRef.current, {
+          rotateZ: 360, // One full rotation on X-axis
+          ease: "none",
+          duration: 0.4, // Second part of the scroll
+        })
+        // Disappear (fade out)
+        .to(cubeRef.current, {
+          opacity: 0,
+          scale: 100, // Shrink while fading
+          ease: "none",
+          duration: 0.1, // Final part of the scroll
+        });
     });
 
     return () => ctx.revert();
