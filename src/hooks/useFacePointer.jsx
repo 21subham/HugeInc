@@ -21,8 +21,8 @@ const useFacePointer = (ref) => {
       const mouseY = event.clientY - centerY;
 
       // Calculate rotation angles (in degrees)
-      const rotateY = (mouseX / 200) * sensitivity; // Rotate around Y-axis
-      const rotateX = -(mouseY / 200) * sensitivity; // Rotate around X-axis
+      const rotateY = (mouseX / 200) * sensitivity;
+      const rotateX = -(mouseY / 200) * sensitivity;
 
       // Animate element rotation with GSAP
       gsap.to(element, {
